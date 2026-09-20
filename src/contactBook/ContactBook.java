@@ -1,7 +1,5 @@
 package contactBook;
 
-import contactBook.Contact;
-
 public class ContactBook {
     static final int DEFAULT_SIZE = 100;
 
@@ -71,6 +69,19 @@ public class ContactBook {
                 i++;
         if (found) result = i;
         return result;
+    }
+
+    public boolean allDifferent() {
+        int curPhone;
+        for(int curContact = 0; curContact < counter - 1; curContact++) {
+            curPhone = contacts[curContact].getPhone();
+            for(int i = curContact + 1; i < counter; i++) {
+                if(curPhone == contacts[i].getPhone()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public String getName(int phone) {
